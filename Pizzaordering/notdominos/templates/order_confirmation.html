@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="display-4">Order Confirmation</h1>
+    <p class="lead">Thank you for your order {{ order.user }}. Your order number is {{ order.id }}.</p>
+    <p class="lead">Your delivery time is {{ order.delivery_date|date:'d-m-Y' }} at {{ order.delivery_time }}</p>
+    <p class="lead">Delivery Address: {{ order.street_address }}, {{ order.city }}, {{ order.country }},
+        {{order.zip_code}}</p>
+    <p class="lead">Your ordered pizza:</p>
+    <ul class="list-group">
+        {% for pizza in order.pizza.all %}
+        <li class="list-group-item">Pizza Size: {{ pizza.size }}</li>
+        <li class="list-group-item">Crust: {{ pizza.crust }}</li>
+        <li class="list-group-item">Toppings:
+            {% if pizza.toppings.all %}
+            {{ pizza.toppings.all|join:", " }}
+            {% else %}
+            No Toppings
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

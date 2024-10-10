@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <form action="" method="POST" class="mt-5">
+        {% csrf_token %}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title">Login</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            {{ form.as_p }}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+                        <p>don't have an account? <a href="{% url 'register' %}">create an account</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+    #id_username,
+    #id_password {
+        width: 100%;
+        box-sizing: border-box;
+    }
+</style>
+{% endblock %}

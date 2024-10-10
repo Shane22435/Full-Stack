@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if orders %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card mt-5">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Your Orders</h4>
+                </div>
+                <!-- Button to order another pizza -->
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center mb-4">
+                            <a href="{% url 'order' %}" class="btn btn-primary btn-lg mt-4">Order Pizza</a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for order in orders %}
+                    <li class="list-group-item">
+                        <h5 class="card-title">Title: {{ order.name }}</h5>
+                        <p>Order Number: {{order.id}}</p>
+                        <p>Delivery Address: {{ order.street_address }}, {{ order.city }}, {{ order.country }},
+                            {{ order.zip_code }}</p>
+                        <p>Date ordered: {{ order.order_date }}</p>
+                        <ul class="list-group">
+                            {% for pizza in order.pizza.all %}
+                            <li class="list-group-item">Pizza Size: {{ pizza.size }}</li>
+                            <li class="list-group-item">Crust: {{ pizza.crust }}</li>
+                            <li class="list-group-item">Toppings:
+                                {% if pizza.toppings.all %}
+                                {{ pizza.toppings.all|join:", " }}
+                                {% else %}
+                                No Toppings
+                                {% endif %}
+                            </li>
+
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+            <h3 class="mt-5">You haven't ordered any pizza</h3>
+            <a href="{% url 'order' %}" class="btn btn-primary btn-lg mt-3">Order Pizza</a>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

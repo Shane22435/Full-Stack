@@ -1,0 +1,48 @@
+{% load static %}
+
+<html>
+    <style>
+        .logo {
+            text-align: center;
+            background-color: red;
+            color: white;
+            padding: 10px;
+        }
+        .navbar {
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 10px;
+        }
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+        .navbar a:hover {
+            background-color: red;
+            color: white;
+        }
+        .maintext {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+    <head>
+    </head>
+    <body bgcolor="beige">
+        <div class="logo">
+            <h1> Not Dominos </h1>
+        </div>
+        <div class="navbar">
+            <a href="/">Home</a>
+            <a href="{% url 'order' %}">Order</a>
+            <a href="{% url 'orders_history' %}">Order History</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </div>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

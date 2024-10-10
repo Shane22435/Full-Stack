@@ -1,0 +1,50 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* App.css */
+
+/* Navigation bar styles */
+nav {
+  background-color: #333; /* Background color */
+  padding: 10px; /* Padding around the navigation links */
+  text-align: center; /* Center-align navigation links */
+}
+
+/* Navigation link styles */
+nav a {
+  color: #fff; /* Text color */
+  text-decoration: none; /* Remove underline */
+  margin-right: 20px; /* Add margin on the right for spacing */
+  font-weight: bold; /* Make text bold */
+}
+
+/* Apply spacing between navigation links */
+nav a + a {
+  margin-left: 20px; /* Add margin on the left for all links except the first one */
+}
+
+/* Hover effect for navigation links */
+nav a:hover {
+  color: #ffcc00; /* Change text color on hover */
+}

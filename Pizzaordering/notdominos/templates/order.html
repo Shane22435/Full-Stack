@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card mt-5">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">Create a New Pizza</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.as_p }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    p {
+        left: 0;
+        margin-right: 10px;
+        margin-top: 10px;
+        display: inline-block;
+    }
+
+    p label {
+        font-size: large;
+        margin-right: 10px;
+        margin-top: 15px;
+    }
+
+    #id_toppings {
+        margin-left: 10px;
+        margin-top: 0;
+    }
+
+    @media screen and (max-width: 600px) {
+        p {
+            left: 0;
+            margin-right: 5px;
+            margin-left: 5px;
+            display: block;
+        }
+
+        p label {
+            margin-bottom: 10px;
+            margin-top: 7.5px;
+        }
+
+        #id_size,
+        #id_crust,
+        #id_cheese,
+        #id_sauce {
+            width: 100%;
+        }
+
+        #id_toppings {
+            margin-left: 5px;
+        }
+    }
+</style>
+
+{% endblock %}
